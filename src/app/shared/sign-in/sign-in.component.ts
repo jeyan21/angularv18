@@ -7,17 +7,17 @@ import { Component } from '@angular/core';
 })
 export class SignInComponent {
 
-  ngOnInit(){
-    const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+  ngOnInit(): void {
+    const signUpButton: HTMLElement = document.getElementById('signUp') as HTMLElement;
+    const signInButton: HTMLElement = document.getElementById('signIn') as HTMLElement;
+    const container: HTMLElement = document.getElementById('container') as HTMLElement;
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
+    signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
+    signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
   }
 }

@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
+import { SignInComponent } from './shared/sign-in/sign-in.component';
 
 export const Approutes: Routes = [
   {
     path: '',
-    component: FullComponent,
+    component: SignInComponent,
+
+  },
+  {
+    path: 'dashboard',
     children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       {
