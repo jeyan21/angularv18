@@ -1,11 +1,12 @@
 
 <div class="container" id="container">
+    
 	<div class="form-container sign-up-container">
 		<form action="#">
 			<h1>Create Account</h1>
-			<div class="social-container">
+			<div class="social-container row">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <asl-google-signin-button shape="circle" size="large" type="icon" theme="outline" class="w-auto"></asl-google-signin-button>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your email for registration</span>
@@ -18,9 +19,9 @@
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+			<div class="social-container row">
+				<a href="#" class="social" (click)="signInWithFB()"><i class="fab fa-facebook-f"></i></a>
+                <asl-google-signin-button shape="circle" size="large" type="icon" theme="outline" class="w-auto"></asl-google-signin-button>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
@@ -44,4 +45,32 @@
 			</div>
 		</div>
 	</div>
+    
 </div>
+
+<div *ngIf="user" class="card text-center">
+    <h6 class="card-header">Social Login Demo</h6>
+    <div class="card-block"></div>
+    <img
+      *ngIf="user.photoUrl"
+      class="card-img-top img-responsive photo"
+      src="{{ user.photoUrl }}"
+    />
+    <div class="card-block">
+      <h4 class="card-title">{{ user.name }}</h4>
+      <p class="card-text">{{ user.email }}</p>
+      <p class="card-text">Logged in with {{ user.provider }}</p>
+    </div>
+    <div class="card-block">
+      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+    </div>
+    <div
+      class="card-block"
+      *ngIf="user.provider === GoogleLoginProvider.PROVIDER_ID"
+    >
+      <button class="btn" (click)="refreshGoogleToken()">
+        Refresh google token
+      </button>
+    </div>
+  </div>
+
